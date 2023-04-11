@@ -31,6 +31,7 @@ def get_fruityvise(this_fruit_choice):
 def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
       my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
+      my_cnx.close()
       return my_cur.fetchall()
 
 if streamlit.button('Get Fruit Load List'):
@@ -53,6 +54,7 @@ except URLError as e:
 def ins_row_sf(new_fruit):
   with my_cnx.cursor() as my_cur:
      my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values('" + new_fruit +"')")
+     my_cnx.close()
      return "Thanks for adding " + new_fruit
 
 add_my_fruit = streamlit.text_input('What fruit would you ike to add?')
