@@ -52,7 +52,7 @@ except URLError as e:
 
 def ins_row_sf(new_fruit):
   with my_cnx.cursor() as my_cur:
-     my_cur.execute("insert into fruit_load_list values(concat(new_fruit,' from streamlist'))")
+     my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values('from streamlist')")
      return "Thanks for adding " + new_fruit
 
 add_my_fruit = streamlit.text_input('What fruit would you ike to add?')
