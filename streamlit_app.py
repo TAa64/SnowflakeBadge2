@@ -33,9 +33,9 @@ def get_fruit_load_list():
       my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
       return my_cur.fetchall()
 
-  if streamlit.button('Get Fruit Load List'):
-    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_data_rows = get_fruit_load_list()
+if streamlit.button('Get Fruit Load List'):
+   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+   my_data_rows = get_fruit_load_list()
   
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
@@ -45,8 +45,7 @@ try:
       # streamlit.write('The user entered ', fruit_choice)
       ret_val = get_fruityvise(fruit_choice)
       streamlit.dataframe(ret_val)
-
-      
+   
 except URLError as e:
   streamlit.error()
 
