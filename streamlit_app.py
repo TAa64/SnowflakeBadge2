@@ -44,3 +44,4 @@ my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
 streamlit.text(my_data_rows)
 
+add_my_fruit = streamlit.multiselect("Add your fruits:", list(my_data_rows))
