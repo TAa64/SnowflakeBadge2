@@ -45,3 +45,7 @@ streamlit.text("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
 add_my_fruit = streamlit.multiselect("Add your fruits:", list(my_data_rows))
+
+streamlit.write('You added',add_my_fruit)
+my_cur.execute("insert into fruit_load_list values('from streamlist')")
+
