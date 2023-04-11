@@ -35,7 +35,7 @@ try:
       streamlit.error("Select a fruit!")
   else:
       # streamlit.write('The user entered ', fruit_choice)
-      ret_val = get_fruityvise(this_fruit_choice)
+      ret_val = get_fruityvise(fruit_choice)
       streamlit.dataframe(ret_val)
 
       
