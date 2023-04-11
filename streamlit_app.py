@@ -50,14 +50,14 @@ try:
 except URLError as e:
   streamlit.error()
 
-streamlit.stop()
+def ins_row_sf(new_fruit):
+  with my_cnx.cursor() as my_cur:
+     my_cur.execute("insert into fruit_load_list values(new_fruit + ' from streamlist')")
+     return "Thanks for adding " + new_fruit
 
-# streamlit.text("Hello from Snowflake:")
-streamlit.text("The fruit load list contains:")
-
-
-add_my_fruit = streamlit.multiselect("Add your fruits:", list(my_data_rows))
-
-streamlit.write('You added',add_my_fruit)
-my_cur.execute("insert into fruit_load_list values('from streamlist')")
+add_my_fruit = streamlit.text_input('What fruit would you ike to add?')
+if streamlit.button('Add Fruit to List'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  ret_val2 = ins_row_sf(add_my_fruit):
+  streamlit.text(ret_val2)
 
